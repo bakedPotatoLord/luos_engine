@@ -21,9 +21,10 @@
             "-I engine/profiles/motor",
             "-I engine/profiles/servo_motor",
             "-I engine/profiles/voltage",
-            "-I engine/bootloader"
-        ],
-        "extraScript": "source_filter_script.py"
+            "-I engine/bootloader",
+            "-I engine/HAL/CH32/inc"
+        ]
+        
     },
     "repository": {
         "type": "git",
