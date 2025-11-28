@@ -6,6 +6,7 @@
  * @version 0.0.0
  ******************************************************************************/
 #include "luos_hal.h"
+#include "timing.h"
 #include <stdbool.h>
 #include <string.h>
 
@@ -87,6 +88,11 @@ static void LuosHAL_SystickInit(void)
      * The Luos systick than most system systick.
      * It allow user to count sent ms since the systick has been started
      ************************************************************************/
+
+    //I don't know why I need to divide this by 6 to make it work, but i do. 
+    TIM1_INT_Init( 48-1, (1000/6)-1);
+    TIM_Cmd( TIM1, ENABLE );
+
 }
 /******************************************************************************
  * @brief Luos HAL general systick tick at 1ms
@@ -98,7 +104,7 @@ uint32_t LuosHAL_GetSystick(void)
     /*************************************************************************
      * This function return the value of Luos systick since MCU has been started
      ************************************************************************/
-    return; // return  tick
+    return  TIM1_GetMS();
 }
 /******************************************************************************
  * @brief Luos GetTimestamp
