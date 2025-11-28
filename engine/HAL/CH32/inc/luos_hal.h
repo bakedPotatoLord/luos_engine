@@ -17,26 +17,7 @@
  ******************************************************************************/
 #define _CRITICAL
 
-#define BOOT_MODE_MASK   0x000000FF
-#define BOOT_MODE_OFFSET 0
-#define NODE_ID_MASK     0x00FFFF00
-#define NODE_ID_OFFSET   8
 
-/*******************************************************************************
- * Variables
- ******************************************************************************/
-
-typedef struct ll_timestamp
-{
-    uint32_t lower_timestamp;
-    uint64_t higher_timestamp;
-    uint32_t start_offset;
-    ;
-} ll_timestamp_t;
-
-/*******************************************************************************
- * Function
- ******************************************************************************/
 void LuosHAL_Init(void);
 void LuosHAL_SetIrqState(bool Enable);
 uint32_t LuosHAL_GetSystick(void);

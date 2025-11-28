@@ -15,14 +15,6 @@
  * Feel free to duplicate it and customize it to your needs.
  *************************************************************************/
 
-/*******************************************************************************
- * Variables
- ******************************************************************************/
-// timestamp variable
-static ll_timestamp_t ll_timestamp;
-/*******************************************************************************
- * Function
- ******************************************************************************/
 static void LuosHAL_SystickInit(void);
 static void LuosHAL_FlashInit(void);
 
@@ -125,7 +117,7 @@ uint64_t LuosHAL_GetTimestamp(void)
      * Make sure to return the value at a ns scale even if your MCU is slower.
      ************************************************************************/
 
-    return // Your timestamp value;
+    return  TIM1_GetUS() * 1000; // Your timestamp value;
 }
 
 /******************************************************************************
@@ -135,13 +127,7 @@ uint64_t LuosHAL_GetTimestamp(void)
  ******************************************************************************/
 void LuosHAL_StartTimestamp(void)
 {
-    /*************************************************************************
-     * This function set the ll_timestamp.start_offset witch is the initial value of the timestamp.
-     * the timestamp value is an int64
-     ************************************************************************/
-    // set ll_timestamp.lower_timestamp
-    // set ll_timestamp.higher_timestamp
-    return ll_timestamp.higher_timestamp * 1000000 + (uint64_t)ll_timestamp.lower_timestamp;
+    resetTimer();
 }
 
 /******************************************************************************
@@ -155,7 +141,5 @@ void LuosHAL_StopTimestamp(void)
      * This function Reset your timestamp counter to 0.
      ************************************************************************/
     // Reset your timestamp struct
-    ll_timestamp.lower_timestamp  = 0;
-    ll_timestamp.higher_timestamp = 0;
-    ll_timestamp.start_offset     = 0;
+    resetTimer();
 }
