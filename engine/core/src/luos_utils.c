@@ -31,6 +31,8 @@ __attribute__((weak)) void node_assert(char *file, uint32_t line)
     return;
 }
 
+#ifdef BOOTLOADER
+
 /******************************************************************************
  * @brief Jump to bootloader by restarting the MCU
  * @param None
@@ -47,6 +49,7 @@ void Luos_JumpToBootloader(void)
     // Reset the MCU
     LuosHAL_Reboot();
 }
+#endif
 
 #ifndef UNIT_TEST
 /******************************************************************************

@@ -16,7 +16,6 @@
  *************************************************************************/
 
 static void LuosHAL_SystickInit(void);
-static void LuosHAL_FlashInit(void);
 
 /////////////////////////Luos Library Needed function///////////////////////////
 
@@ -35,9 +34,6 @@ void LuosHAL_Init(void)
 
     // Systick Initialization
     LuosHAL_SystickInit();
-
-    // Flash Initialization
-    LuosHAL_FlashInit();
 
     // start timestamp
     LuosHAL_StartTimestamp();

@@ -667,11 +667,15 @@ error_return_t LuosIO_ConsumeMsg(const msg_t *input)
             break;
             //**************************************** bootloader section ****************************************
 
+        #ifdef WITH_BOOTLOADER
+
         case BOOTLOADER_RESET:
             LuosHAL_SetMode((uint8_t)BOOT_MODE);
             LuosHAL_Reboot();
             return SUCCEED;
             break;
+            
+        #endif
 
 #ifdef WITH_BOOTLOADER
         case BOOTLOADER_START:
